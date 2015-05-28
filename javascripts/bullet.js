@@ -1,7 +1,7 @@
 ;(function() {
   'use strict';
   var RADIUS = 2;
-  var COLOR = 'green';
+  var COLOR = '#fff';
 
   if (!window.Asteroids) {
     window.Asteroids = {};

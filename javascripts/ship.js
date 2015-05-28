@@ -48,6 +48,16 @@
     );
 
     ctx.fill();
+
+    ctx.fillStyle = '#FE7300';
+
+    ctx.fillRect(
+      this.pos[0] - (this.width / 2),
+      this.pos[1] + this.radius,
+      this.width,
+      this.vel * 2
+    );
+
     ctx.restore();
   };
 
