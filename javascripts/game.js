@@ -66,7 +66,7 @@
   Game.prototype.checkCollisions = function () {
     this.objectsNotShip().forEach(function(object1) {
       this.allObjects().forEach(function(object2) {
-        if(object1 != object2){
+        if(object1 != object2) {
           if(object1.isCollidedWith(object2)) {
             object1.collideWith(object2);
           }

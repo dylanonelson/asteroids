@@ -1,0 +1,11 @@
+/* line 1, ../sass/stylesheet.scss */
+body {
+  background: #ddd;
+}
+
+/* line 5, ../sass/stylesheet.scss */
+canvas {
+  display: block;
+  margin: auto;
+  background: #fff;
+}
