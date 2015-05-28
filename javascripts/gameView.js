@@ -17,11 +17,11 @@
 
   GameView.prototype.bindKeyHandlers = function () {
     key('i', function() {
-      this.game.ship.power(1);
+      this.game.ship.power();
     }.bind(this));
 
     key('k', function() {
-      this.game.ship.decelerate(1);
+      this.game.ship.decelerate();
     }.bind(this));
 
     key('l', function () {
