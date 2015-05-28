@@ -4,9 +4,9 @@
   var HEIGHT = 25;
   var WIDTH = 20;
   var RADIUS = 8;
-  var COLOR = "blue";
-  var VEL = [0, 0];
-  var MAX = 10;
+  var COLOR = '#fff';
+  var VEL = 0;
+  var MAX = 6;
 
   var Ship = window.Asteroids.Ship = function (pos, game) {
     Asteroids.MovingObject.call(this, pos);
@@ -16,7 +16,7 @@
     this.color = COLOR;
     this.vel = VEL;
     this.game = game;
-    this.orientation = Math.PI;
+    this.orientation = Math.PI * 1.5;
   };
 
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
@@ -57,26 +57,21 @@
   };
 
   Ship.prototype.move = function () {
-    this.pos[0] += this.vel[0] * Math.cos(this.orientation);
-    this.pos[1] += this.vel[1] * Math.sin(this.orientation);
+    this.pos[0] += this.vel * Math.cos(this.orientation);
+    this.pos[1] += this.vel * Math.sin(this.orientation);
     this.pos = this.game.wrap(this.pos);
   };
 
   Ship.prototype.power = function () {
-    if(Math.sqrt(Math.pow(this.vel[0], 2) + Math.pow(this.vel[1],2)) <= MAX) {
-      this.vel[0] += 1;
-      this.vel[1] += 1;
+    if(this.vel <= MAX) {
+      this.vel += 1;
     }
   };
 
   Ship.prototype.decelerate = function () {
-    if(Math.sqrt(Math.pow(this.vel[0], 2) + Math.pow(this.vel[1],2)) <= 0.000001) {
-      this.vel[0] = 0;
-      this.vel[1] = 0;
-      return;
+    if(this.vel > 0) {
+      this.vel -= 1;
     }
-    this.vel[0] -= 1;
-    this.vel[1] -= 1
   };
 
   Ship.prototype.rotate = function (shift) {
@@ -89,10 +84,8 @@
 
   Ship.prototype.fireBullet = function () {
     var bulletVelocity = [
-      (6 + this.vel[0]) * Math.cos(this.orientation),
-      (6 + this.vel[1]) * Math.sin(this.orientation),
-      this.vel[0],
-      this.vel[1]
+      8 * Math.cos(this.orientation),
+      8 * Math.sin(this.orientation)
     ];
     var bullet = new Asteroids.Bullet(this.pos, bulletVelocity, this.game);
   };
