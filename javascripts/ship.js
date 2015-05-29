@@ -58,7 +58,7 @@
       this.pos[0] - (this.width / 2),
       this.pos[1] + this.radius,
       this.width,
-      this.vel * 2
+      this.thrusts.length * 5
     );
 
     ctx.restore();
