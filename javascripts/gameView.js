@@ -4,15 +4,27 @@
   var GameView = Asteroids.GameView = function (game, ctx) {
     this.game = game;
     this.ctx = ctx;
-  }
+    this.scoreSpans = document.getElementsByClassName('score');
+  };
 
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
     var render = (function() {
+      if (this.game.lives === 0 || this.game.asteroids.length === 0) {
+        clearInterval(intervalId);
+        var modal = document.getElementById('modal');
+        modal.className = 'modal';
+      }
       this.game.step();
       this.game.draw(this.ctx);
+
+      [].forEach.call(this.scoreSpans, function (span) {
+        span.textContent = this.game.score;
+      }.bind(this));
+
+      document.getElementById('lives').textContent = this.game.lives;
     }).bind(this);
-    window.setInterval(render, 20);
+    var intervalId = window.setInterval(render, 20);
   };
 
   GameView.prototype.bindKeyHandlers = function () {
@@ -36,4 +48,13 @@
       this.game.ship.fireBullet();
     }.bind(this));
   };
+
+  GameView.prototype.unbindKeyHandlers = function () {
+    key.unbind('i');
+    key.unbind('k');
+    key.unbind('l');
+    key.unbind('j');
+    key.unbind('a');
+  };
+
 })();

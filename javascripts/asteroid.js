@@ -35,13 +35,9 @@
 
   Asteroid.prototype.collideWith = function (otherObject) {
     if (otherObject instanceof Asteroids.Ship) {
+      this.game.lives -= 1;
       otherObject.relocate();
-    } else {
-      this.bounce();
     }
   };
-  Asteroid.prototype.bounce = function () {
-    this.vel[0] = -this.vel[0];
-    this.vel[1] = -this.vel[1];
-  };
+
 })();

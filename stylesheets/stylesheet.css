@@ -1,11 +1,84 @@
 /* line 1, ../sass/stylesheet.scss */
-body {
-  background: #ddd;
+ul, li, button {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
 }
 
-/* line 5, ../sass/stylesheet.scss */
+/* line 11, ../sass/stylesheet.scss */
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+/* line 17, ../sass/stylesheet.scss */
+.gone {
+  display: none;
+}
+
+/* line 21, ../sass/stylesheet.scss */
+body {
+  background: #000;
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+}
+
+/* line 27, ../sass/stylesheet.scss */
+header {
+  width: 600px;
+  margin: auto;
+  margin-top: 75px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+/* line 35, ../sass/stylesheet.scss */
+header ul {
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 15px;
+}
+/* line 40, ../sass/stylesheet.scss */
+header li {
+  display: inline-block;
+  padding: 10px;
+  float: left;
+}
+
+/* line 47, ../sass/stylesheet.scss */
 canvas {
   display: block;
   margin: auto;
+  background: #000;
+  border: 2px solid #fff;
+}
+
+/* line 54, ../sass/stylesheet.scss */
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 412px;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+/* line 66, ../sass/stylesheet.scss */
+.modal h2 {
+  display: block;
+  margin: auto;
+  line-height: 1.5;
+  color: #000;
+}
+/* line 73, ../sass/stylesheet.scss */
+.modal button {
+  display: block;
+  padding: 10px;
+  margin: auto;
+  cursor: pointer;
   background: #000;
 }

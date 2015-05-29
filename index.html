@@ -2,9 +2,22 @@
   <head>
     <title>Asteroids</title>
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
   </head>
   <body>
+    <header class="clearfix">
+      <h1>Asteroids</h1>
+      <ul>
+        <li>Lives: <span id="lives"></span></li>
+        <li>Score: <span class="score"></span></li>
+      </ul>
+    </header>
     <canvas id="game-canvas" width = "600" height= "600"></canvas>
+
+    <div id="modal" class="modal gone">
+      <h2>Score: <span class="score"></span></h2>
+      <button id="play-again">Play again</button>
+    </div>
 
     <script src="javascripts/keymaster.js"></script>
     <script src="javascripts/util.js"></script>
@@ -20,6 +33,12 @@
       var ctx = canvas.getContext("2d");
       var game = new window.Asteroids.Game();
       var gameView = new window.Asteroids.GameView(game, ctx);
+      document.getElementById('play-again').addEventListener('click', function () {
+        var game = new window.Asteroids.Game();
+        var gameView = new window.Asteroids.GameView(game, ctx);
+        document.getElementById('modal').className = 'modal gone';
+        gameView.start();
+      })
       gameView.start();
     </script>
   </body>

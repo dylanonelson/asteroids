@@ -8,6 +8,8 @@
     this.addAsteroids();
     this.ship = new Asteroids.Ship(this.randomPosition(), this);
     this.bullets = [];
+    this.score = 0;
+    this.lives = 3;
   };
 
   Game.prototype.isOutOfBounds = function (pos) {

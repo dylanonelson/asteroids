@@ -20,8 +20,9 @@
 
   Bullet.prototype.collideWith = function (otherObject) {
     if (otherObject instanceof Asteroids.Asteroid) {
-    this.game.remove(otherObject);
-    this.game.remove(this);
+      this.game.score += otherObject.radius;
+      this.game.remove(otherObject);
+      this.game.remove(this);
     }
   };
 
