@@ -5,17 +5,20 @@
   var WIDTH = 20;
   var RADIUS = 8;
   var COLOR = '#fff';
-  var VEL = 0;
+  var VEL = [0, 0];
   var MAX = 6;
 
   var Ship = window.Asteroids.Ship = function (pos, game) {
     Asteroids.MovingObject.call(this, pos);
+    this.game = game;
+    
     this.height = HEIGHT;
     this.width = WIDTH;
     this.radius = RADIUS;
     this.color = COLOR;
+    
     this.vel = VEL;
-    this.game = game;
+    this.thrusts = [];
     this.orientation = Math.PI * 1.5;
   };
 
@@ -67,21 +70,26 @@
   };
 
   Ship.prototype.move = function () {
-    this.pos[0] += this.vel * Math.cos(this.orientation);
-    this.pos[1] += this.vel * Math.sin(this.orientation);
+    this.vel = [0, 0]
+
+    this.thrusts.forEach(function (thrust) {
+      if (thrust.force === 0 ) {
+        this.thrusts.splice(this.thrusts.indexOf(thrust), 1);
+      } else {
+        thrust.fire();
+      }
+    }.bind(this))
+
+    this.pos[0] += this.vel[0]
+    this.pos[1] += this.vel[1]
+
     this.pos = this.game.wrap(this.pos);
   };
 
   Ship.prototype.power = function () {
-    if(this.vel <= MAX) {
-      this.vel += 1;
-    }
-  };
-
-  Ship.prototype.decelerate = function () {
-    if(this.vel > 0) {
-      this.vel -= 1;
-    }
+    var thrust = new window.Asteroids.Thrust(this, this.orientation, 500);
+    this.thrusts.push(thrust);
+    this._thrusters = true;
   };
 
   Ship.prototype.rotate = function (shift) {

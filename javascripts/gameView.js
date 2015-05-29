@@ -32,10 +32,6 @@
       this.game.ship.power();
     }.bind(this));
 
-    key('k', function() {
-      this.game.ship.decelerate();
-    }.bind(this));
-
     key('l', function () {
       this.game.ship.rotate(-1);
     }.bind(this));
@@ -51,7 +47,6 @@
 
   GameView.prototype.unbindKeyHandlers = function () {
     key.unbind('i');
-    key.unbind('k');
     key.unbind('l');
     key.unbind('j');
     key.unbind('a');
