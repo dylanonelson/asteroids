@@ -1,9 +1,9 @@
 ;(function() {
   'use strict';
   var Game = window.Asteroids.Game = function () {
-    this.DIM_X = 600;
-    this.DIM_Y = 600;
-    this.NUM_ASTEROIDS = 10;
+    this.DIM_X = window.innerWidth - 15;
+    this.DIM_Y = window.innerHeight - 15;
+    this.NUM_ASTEROIDS = Math.floor(this.DIM_X * this.DIM_Y / 75000);
     this.asteroids = [];
     this.addAsteroids();
     this.ship = new Asteroids.Ship(this.randomPosition(), this);

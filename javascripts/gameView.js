@@ -12,7 +12,7 @@
     var render = (function() {
       if (this.game.lives === 0 || this.game.asteroids.length === 0) {
         clearInterval(intervalId);
-        var modal = document.getElementById('modal');
+        var modal = document.getElementById('play-again-modal');
         modal.className = 'modal';
       }
       this.game.step();

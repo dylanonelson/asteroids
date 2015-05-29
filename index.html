@@ -5,18 +5,31 @@
     <link href='http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <header class="clearfix">
+    <header id="header" class="clearfix gone">
       <h1>Asteroids</h1>
       <ul>
         <li>Lives: <span id="lives"></span></li>
         <li>Score: <span class="score"></span></li>
       </ul>
     </header>
-    <canvas id="game-canvas" width = "600" height= "600"></canvas>
+    <canvas id="game-canvas"></canvas>
 
-    <div id="modal" class="modal gone">
-      <h2>Score: <span class="score"></span></h2>
-      <button id="play-again">Play again</button>
+    <div id="play-modal" class="modal">
+      <main class="content">
+        <h2>Asteroids</h2>
+        <ul>
+          <li>Use the arrow keys to move.</li>
+          <li>Use the space bar to fire.</li>
+        </ul>
+        <button id="play">Play</button>
+      </main>  
+    </div>
+
+    <div id="play-again-modal" class="modal gone">
+      <main class="content">
+        <h2>Score: <span class="score"></span></h2>
+        <button id="play-again">Play again</button>
+      </main>
     </div>
 
     <script src="javascripts/keymaster.js"></script>
@@ -32,15 +45,28 @@
     <script>
       var canvas = document.getElementById("game-canvas");
       var ctx = canvas.getContext("2d");
-      var game = new window.Asteroids.Game();
-      var gameView = new window.Asteroids.GameView(game, ctx);
+
+      canvas.height = window.innerHeight - 15;
+      canvas.width = window.innerWidth - 15;
+
+      document.getElementById('play').addEventListener('click', function() {
+        document.getElementById('play-modal').className = 'modal gone';
+        beginGame();
+      })
+
       document.getElementById('play-again').addEventListener('click', function () {
+        document.getElementById('play-again-modal').className = 'modal gone';
+        beginGame();
+      })
+
+      function beginGame () {
         var game = new window.Asteroids.Game();
         var gameView = new window.Asteroids.GameView(game, ctx);
-        document.getElementById('modal').className = 'modal gone';
+        canvas.height = game.DIM_Y;
+        canvas.width = game.DIM_X;
+        document.getElementById('header').className = 'clearfix';
         gameView.start();
-      })
-      gameView.start();
+      };
     </script>
   </body>
 </html>

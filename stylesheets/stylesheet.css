@@ -1,84 +1,96 @@
 /* line 1, ../sass/stylesheet.scss */
-ul, li, button {
+html, body, ul, li, button, canvas {
   padding: 0;
   margin: 0;
   outline: 0;
   border: 0;
+  list-style-type: none;
   font: inherit;
   color: inherit;
 }
 
-/* line 11, ../sass/stylesheet.scss */
+/* line 13, ../sass/stylesheet.scss */
 .clearfix:after {
   display: block;
   content: "";
   clear: both;
 }
 
-/* line 17, ../sass/stylesheet.scss */
+/* line 19, ../sass/stylesheet.scss */
 .gone {
   display: none;
 }
 
-/* line 21, ../sass/stylesheet.scss */
+/* line 23, ../sass/stylesheet.scss */
 body {
   background: #000;
   font-family: 'Orbitron', sans-serif;
   color: #fff;
+  overflow: hidden;
 }
 
-/* line 27, ../sass/stylesheet.scss */
+/* line 30, ../sass/stylesheet.scss */
 header {
-  width: 600px;
-  margin: auto;
-  margin-top: 75px;
-  margin-bottom: 25px;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  width: 300px;
   text-align: center;
 }
-/* line 35, ../sass/stylesheet.scss */
+/* line 38, ../sass/stylesheet.scss */
 header ul {
   display: inline-block;
   margin: auto;
   margin-bottom: 15px;
 }
-/* line 40, ../sass/stylesheet.scss */
+/* line 43, ../sass/stylesheet.scss */
 header li {
   display: inline-block;
   padding: 10px;
   float: left;
 }
 
-/* line 47, ../sass/stylesheet.scss */
+/* line 50, ../sass/stylesheet.scss */
 canvas {
   display: block;
-  margin: auto;
+  margin: 5px;
   background: #000;
   border: 2px solid #fff;
+  box-sizing: border-box;
 }
 
-/* line 54, ../sass/stylesheet.scss */
+/* line 60, ../sass/stylesheet.scss */
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  padding-top: 412px;
+  line-height: 2;
   background: rgba(255, 255, 255, 0.8);
   text-align: center;
 }
-/* line 66, ../sass/stylesheet.scss */
+/* line 72, ../sass/stylesheet.scss */
+.modal .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #000;
+  transform: translate(-50%, -50%);
+}
+/* line 82, ../sass/stylesheet.scss */
 .modal h2 {
   display: block;
   margin: auto;
   line-height: 1.5;
-  color: #000;
 }
-/* line 73, ../sass/stylesheet.scss */
+/* line 88, ../sass/stylesheet.scss */
 .modal button {
   display: block;
   padding: 10px;
   margin: auto;
   cursor: pointer;
+  line-height: 1;
+  color: #fff;
   background: #000;
 }
