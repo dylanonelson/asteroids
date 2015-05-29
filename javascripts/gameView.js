@@ -28,28 +28,33 @@
   };
 
   GameView.prototype.bindKeyHandlers = function () {
-    key('i', function() {
+    key('i, up', function() {
       this.game.ship.power();
     }.bind(this));
 
-    key('l', function () {
+    key('l, right', function () {
       this.game.ship.rotate(-1);
     }.bind(this));
 
-    key('j', function () {
+    key('j, left', function () {
       this.game.ship.rotate(1);
     }.bind(this));
 
-    key('a', function () {
+    key('k, down', function () {
+      this.game.ship.relocate();
+    }.bind(this));
+
+    key('a, space', function () {
       this.game.ship.fireBullet();
     }.bind(this));
   };
 
   GameView.prototype.unbindKeyHandlers = function () {
-    key.unbind('i');
-    key.unbind('l');
-    key.unbind('j');
-    key.unbind('a');
+    key.unbind('i, up');
+    key.unbind('l, right');
+    key.unbind('j, left');
+    key.unbind('k, down');
+    key.unbind('a, space');
   };
 
 })();
