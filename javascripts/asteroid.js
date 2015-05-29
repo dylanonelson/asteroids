@@ -11,7 +11,7 @@
     this.sprite = new Image();
     this.sprite.src = './images/asteroids.png';
     this.spriteX = Math.floor(Math.random() * 7) * 130;
-    this.spriteY = Math.floor(Math.random() * 8) * 130;
+    this.spriteY = Math.floor(Math.random() * 6) * 130;
   };
 
   Asteroids.Util.inherits(Asteroids.Asteroid, Asteroids.MovingObject);
