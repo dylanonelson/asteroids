@@ -10,10 +10,13 @@
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
     var render = (function() {
-      if (this.game.lives === 0 || this.game.asteroids.length === 0) {
+      if (this.game.lives === 0) {
         clearInterval(intervalId);
         var modal = document.getElementById('play-again-modal');
         modal.className = 'modal';
+      }
+      if (this.game.asteroids.length === 0) {
+        this.game.refreshAsteroids();
       }
       this.game.step();
       this.game.draw(this.ctx);

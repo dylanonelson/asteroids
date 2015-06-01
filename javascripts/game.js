@@ -91,4 +91,10 @@
     this.moveObjects();
     this.checkCollisions();
   };
+
+  Game.prototype.refreshAsteroids = function () {
+    this.NUM_ASTEROIDS += 10;
+    this.addAsteroids();
+  };
+  
 })();
