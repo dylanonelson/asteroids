@@ -3,7 +3,7 @@
 
   var HEIGHT = 25;
   var WIDTH = 20;
-  var RADIUS = 8;
+  var RADIUS = 20;
   var COLOR = '#fff';
   var VEL = [0, 0];
   var MAX = 6;
@@ -12,10 +12,9 @@
     Asteroids.MovingObject.call(this, pos);
     this.game = game;
     
-    this.height = HEIGHT;
-    this.width = WIDTH;
+    this.image = new Image();
+    this.image.src = './images/ship.png';
     this.radius = RADIUS;
-    this.color = COLOR;
     
     this.vel = VEL;
     this.thrusts = [];
@@ -31,34 +30,16 @@
     ctx.rotate(this.orientation + Math.PI / 2);
     ctx.translate(this.pos[0] * -1, this.pos[1] * -1);
 
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.lineTo(
-      this.pos[0] - (this.width / 2),
-      this.pos[1] + this.radius
-    );
-    ctx.lineTo(
-      this.pos[0],
-      this.pos[1] - this.height
-    );
-    ctx.lineTo(
-      this.pos[0] + (this.width / 2),
-      this.pos[1] + this.radius
-    );
-    ctx.lineTo(
-      this.pos[0],
-      this.pos[1] + this.radius
-    );
-
-    ctx.fill();
-
-    ctx.fillStyle = '#FE7300';
-
-    ctx.fillRect(
-      this.pos[0] - (this.width / 2),
-      this.pos[1] + this.radius,
-      this.width,
-      this.thrusts.length * 5
+    ctx.drawImage(
+      this.image,
+      0,
+      0,
+      64,
+      64,
+      this.pos[0] - 30, 
+      this.pos[1] - 30,
+      60,
+      60
     );
 
     ctx.restore();
