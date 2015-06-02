@@ -17,7 +17,7 @@ The asteroids are simple, floating MovingObjects. I used a sprite png file, a ra
 The game is executed from a simple script loaded directly onto the page. Depending on whether the user has already played a game, a "Play" or "Play again" modal fixed across the width of the window serves as orientation. I'm currently using the Keymaster, a super-simple JavaScript library for binding events for key presses; the ship will move based on the arrow keys or on j, i, k, and l. As in the arcade version, the ship will relocate if you press 'down'.
 
 ###Next steps
-* Retro ship outline
-* Multiple levels
-* More fluid I/O with custom event handlers
-* Leaderboard (server-side integration)
+- [ ] Retro ship outline
+- [ ] Multiple levels
+- [ ] More fluid I/O with custom event handlers
+- [ ] Leaderboard (server-side integration)
